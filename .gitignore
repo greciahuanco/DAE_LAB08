@@ -2,6 +2,16 @@
 __pycache__/
 *.pyc
 db.sqlite3
+media/
+README.md
+docs/
+evidencias/
+*.docx
+*.doc
+*.pdf
+*.pptx
+*.ppt
 .env
+.env.*
 agent_audit.jsonl
 schema.yml

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Recomendaciones de películas</title>
+</head>
+<body>
+    <h1>Recomendaciones para {{ movie.title }}</h1>
+
+    {% if recommendations %}
+        <ul>
+            {% for recommendation in recommendations %}
+                <li>
+                    <strong>{{ recommendation.title }}</strong>
+                    ({{ recommendation.release_year }})
+
+                    {% if recommendation.average_rating %}
+                        - Valoración promedio:
+                        {{ recommendation.average_rating|floatformat:1 }}
+                    {% else %}
+                        - Sin valoraciones
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay recomendaciones disponibles para esta película.</p>
+    {% endif %}
+</body>
+</html>

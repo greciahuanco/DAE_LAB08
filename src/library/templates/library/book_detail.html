@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }} - Book Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            color: #212529;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2C3E50;
+            border-bottom: 2px solid #D9DEE3;
+            padding-bottom: 0.5rem;
+        }
+        h2 {
+            color: #3F6D8C;
+            margin-top: 2rem;
+        }
+        .book-cover {
+            max-width: 200px;
+            max-height: 300px;
+            border: 1px solid #D9DEE3;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        .info-row {
+            display: flex;
+            margin-bottom: 0.75rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #F0F3F5;
+        }
+        .info-label {
+            font-weight: bold;
+            width: 180px;
+            color: #3F6D8C;
+        }
+        .info-value {
+            flex: 1;
+        }
+        .categories-list, .publications-list {
+            list-style: none;
+            padding: 0;
+        }
+        .categories-list li, .publications-list li {
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            background: #F5F6F7;
+            border: 1px solid #D9DEE3;
+            border-radius: 4px;
+        }
+        .publication-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .publication-field {
+            flex: 1;
+            min-width: 150px;
+        }
+        .publication-field strong {
+            color: #3F6D8C;
+        }
+        a.back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: #3F6D8C;
+            text-decoration: none;
+        }
+        a.back-link:hover {
+            color: #2C3E50;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'admin:index' %}" class="back-link">&larr; Back to Admin</a>
+
+    <h1>{{ book.title }}</h1>
+
+    {% if book.cover %}
+        <img src="{{ book.cover.url }}" alt="{{ book.title }} cover" class="book-cover">
+    {% endif %}
+
+    <div class="info-row">
+        <span class="info-label">ISBN:</span>
+        <span class="info-value">{{ book.isbn }}</span>
+    </div>
+
+    <div class="info-row">
+        <span class="info-label">Publication Date:</span>
+        <span class="info-value">{{ book.publication_date|default:"Not specified" }}</span>
+    </div>
+
+    <div class="info-row">
+        <span class="info-label">Pages:</span>
+        <span class="info-value">{{ book.pages|default:"Not specified" }}</span>
+    </div>
+
+    <h2>Author</h2>
+    <div class="info-row">
+        <span class="info-label">Name:</span>
+        <span class="info-value">{{ book.author.first_name }} {{ book.author.last_name }}</span>
+    </div>
+    <div class="info-row">
+        <span class="info-label">Nationality:</span>
+        <span class="info-value">{{ book.author.nationality|default:"Not specified" }}</span>
+    </div>
+
+    <h2>Categories</h2>
+    {% if book.categories.all %}
+        <ul class="categories-list">
+            {% for category in book.categories.all %}
+                <li>{{ category.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No categories assigned.</p>
+    {% endif %}
+
+    <h2>Publications</h2>
+    {% if publications %}
+        <ul class="publications-list">
+            {% for pub in publications %}
+                <li class="publication-item">
+                    <div class="publication-field">
+                        <strong>Publisher:</strong> {{ pub.publisher.name }}
+                    </div>
+                    <div class="publication-field">
+                        <strong>Edition:</strong> {{ pub.edition }}
+                    </div>
+                    <div class="publication-field">
+                        <strong>Date:</strong> {{ pub.publication_date }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No publications recorded.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category.name }} | Portal de Noticias{% endblock %}
+
+{% block content %}
+    <h2>Noticias de {{ category.name }}</h2>
+
+    {% for article in articles %}
+        {% include "news/_article_card.html" %}
+    {% empty %}
+        <p>No hay noticias disponibles en esta categoría.</p>
+    {% endfor %}
+{% endblock %}
+
+{% block sidebar %}
+    <h3>Categoría</h3>
+    <p>Actualmente estás viendo noticias de {{ category.name }}.</p>
+{% endblock %}

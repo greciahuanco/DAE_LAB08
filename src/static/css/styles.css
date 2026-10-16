@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #222;
+    color: white;
+    padding: 20px;
+}
+
+header a {
+    color: white;
+}
+
+main {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+}
+
+section {
+    flex: 3;
+}
+
+aside {
+    flex: 1;
+}
+
+.article-card {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.article-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+}

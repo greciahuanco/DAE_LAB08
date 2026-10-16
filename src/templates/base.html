@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portal de Noticias{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+    <header>
+        <h1>Portal de Noticias</h1>
+        <nav>
+            <a href="{% url 'news:home' %}">Inicio</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            {% block content %}
+            {% endblock %}
+        </section>
+
+        <aside>
+            {% block sidebar %}
+            <h3>Categorías</h3>
+            <p>Selecciona una categoría para ver sus noticias.</p>
+            {% endblock %}
+        </aside>
+    </main>
+
+    <footer>
+        <p>Desarrollo de Aplicaciones Empresariales - Laboratorio 06</p>
+    </footer>
+
+</body>
+</html>

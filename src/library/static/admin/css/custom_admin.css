@@ -1,0 +1,174 @@
+#header {
+    background-color: #2C3E50;
+}
+
+#header a:link, #header a:visited {
+    color: #FFFFFF;
+}
+
+#branding h1 {
+    color: #FFFFFF;
+}
+
+#branding h1 a:link, #branding h1 a:visited {
+    color: #FFFFFF;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background-color: #2C3E50;
+    color: #FFFFFF;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background-color: #3F6D8C;
+    border-color: #3F6D8C;
+    color: #FFFFFF;
+}
+
+.button:active, input[type=submit]:active, input[type=button]:active, .submit-row input:active, a.button:active {
+    background-color: #2C3E50;
+    border-color: #2C3E50;
+}
+
+.button:hover, input[type=submit]:hover, input[type=button]:hover, .submit-row input:hover, a.button:hover {
+    background-color: #355D78;
+    border-color: #355D78;
+}
+
+a:link, a:visited {
+    color: #3F6D8C;
+}
+
+a:hover, a:focus {
+    color: #2C3E50;
+}
+
+body {
+    background-color: #F5F6F7;
+    color: #212529;
+}
+
+#container {
+    background-color: #F5F6F7;
+}
+
+#content {
+    background-color: #FFFFFF;
+    border-color: #D9DEE3;
+}
+
+#footer {
+    background-color: #F5F6F7;
+    border-top: 1px solid #D9DEE3;
+    color: #212529;
+}
+
+table thead th {
+    background-color: #2C3E50;
+    color: #FFFFFF;
+    border-color: #D9DEE3;
+}
+
+table tbody tr {
+    background-color: #FFFFFF;
+    border-color: #D9DEE3;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #FAFAFB;
+}
+
+table tbody tr:hover {
+    background-color: #F0F3F5;
+}
+
+.field-box {
+    border-color: #D9DEE3;
+}
+
+.aligned label {
+    color: #212529;
+}
+
+input[type=text], input[type=email], input[type=url], input[type=password], input[type=number], input[type=date], select, textarea {
+    border-color: #D9DEE3;
+    background-color: #FFFFFF;
+    color: #212529;
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=url]:focus, input[type=password]:focus, input[type=number]:focus, input[type=date]:focus, select:focus, textarea:focus {
+    border-color: #3F6D8C;
+    box-shadow: 0 0 0 2px rgba(63, 109, 140, 0.15);
+}
+
+.breadcrumbs {
+    background-color: #F5F6F7;
+    border-bottom: 1px solid #D9DEE3;
+}
+
+.breadcrumbs a {
+    color: #3F6D8C;
+}
+
+.breadcrumbs a:hover {
+    color: #2C3E50;
+}
+
+.object-tools {
+    background-color: #F5F6F7;
+    border-bottom: 1px solid #D9DEE3;
+}
+
+.paginator {
+    background-color: #F5F6F7;
+    border-top: 1px solid #D9DEE3;
+}
+
+#changelist-filter {
+    background-color: #F5F6F7;
+    border-right: 1px solid #D9DEE3;
+}
+
+#changelist-filter h2 {
+    background-color: #2C3E50;
+    color: #FFFFFF;
+}
+
+#changelist-filter a {
+    color: #3F6D8C;
+}
+
+#changelist-filter a:hover {
+    color: #2C3E50;
+}
+
+.inline-related {
+    border-color: #D9DEE3;
+}
+
+.inline-related h2 {
+    background-color: #2C3E50;
+    color: #FFFFFF;
+}
+
+.dashboard .module {
+    background-color: #FFFFFF;
+    border-color: #D9DEE3;
+}
+
+.dashboard .module h2 {
+    background-color: #2C3E50;
+    color: #FFFFFF;
+}
+
+#user-tools {
+    background-color: #2C3E50;
+}
+
+#user-tools a {
+    color: #FFFFFF;
+}
+
+#user-tools a:hover {
+    color: #D9DEE3;
+}

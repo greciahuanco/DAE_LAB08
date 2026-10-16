@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio | Portal de Noticias{% endblock %}
+
+{% block content %}
+    <h2>Últimas noticias</h2>
+
+    {% for article in articles %}
+        {% include "news/_article_card.html" %}
+    {% empty %}
+        <p>No hay noticias disponibles.</p>
+    {% endfor %}
+{% endblock %}
+
+{% block sidebar %}
+    <h3>Información</h3>
+    <p>Consulta las últimas noticias publicadas.</p>
+{% endblock %}

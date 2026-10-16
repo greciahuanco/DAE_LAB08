@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} | Portal de Noticias{% endblock %}
+
+{% block content %}
+    <article>
+        <h2>{{ article.title }}</h2>
+
+        {% if article.featured_image %}
+            <img src="{{ article.featured_image.url }}" alt="{{ article.title }}">
+        {% endif %}
+
+        <p>
+            <strong>Autor:</strong> {{ article.author }}
+        </p>
+
+        <p>
+            <strong>Fecha de publicación:</strong>
+            {{ article.publication_date|date:"d/m/Y" }}
+        </p>
+
+        <p>
+            <strong>Categorías:</strong>
+            {% for category in article.categories.all %}
+                {{ category.name }}{% if not forloop.last %}, {% endif %}
+            {% empty %}
+                Sin categorías
+            {% endfor %}
+        </p>
+
+        <div>
+            {{ article.body|linebreaks }}
+        </div>
+    </article>
+{% endblock %}
+
+{% block sidebar %}
+    <h3>Detalle de la noticia</h3>
+    <p>Información completa de la noticia seleccionada.</p>
+{% endblock %}
