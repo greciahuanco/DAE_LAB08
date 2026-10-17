@@ -1,9 +1,15 @@
+from django.db import transaction
 from django.db.models import Count
 from drf_spectacular.utils import OpenApiParameter, extend_schema, extend_schema_view
 from rest_framework import filters, viewsets
 
-from .models import Exam, Question
-from .serializers import ExamSerializer, QuestionSerializer
+from .models import Choice, Exam, Question
+from .serializers import (
+    ChoiceResourceSerializer,
+    ExamSerializer,
+    QuestionSerializer,
+    validate_choice_set,
+)
 
 
 class ExamViewSet(viewsets.ModelViewSet):
@@ -29,3 +35,14 @@ class QuestionViewSet(viewsets.ModelViewSet):
         if exam and exam.isdigit():
             queryset = queryset.filter(exam_id=int(exam))
         return queryset
+
+
+class ChoiceViewSet(viewsets.ModelViewSet):
+    serializer_class = ChoiceResourceSerializer
+    queryset = Choice.objects.select_related("question").order_by("id")
+
+    @transaction.atomic
+    def perform_destroy(self, instance):
+        Question.objects.select_for_update().get(pk=instance.question_id)
+        validate_choice_set(instance.question.choices.exclude(pk=instance.pk))
+        instance.delete()
