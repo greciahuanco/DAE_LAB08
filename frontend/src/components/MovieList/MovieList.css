@@ -1,7 +1,8 @@
 .movie-list {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 1rem 1.5rem 3rem;
+  padding: 1rem 2rem 4rem;
 }
 
 .movie-list h2 {
@@ -12,17 +13,27 @@
 
 .movie-list__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: stretch;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
 .movie-list__grid .movie-card {
   width: 100%;
 }
 
+@media (max-width: 960px) {
+  .movie-list__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 640px) {
   .movie-list {
     padding: 0.5rem 1rem 2rem;
+  }
+
+  .movie-list__grid {
+    grid-template-columns: 1fr;
   }
 }
