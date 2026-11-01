@@ -5,13 +5,11 @@ import MovieList from './components/MovieList/MovieList.jsx'
 import { movies } from './data/movies.js'
 
 function App() {
-  const featuredMovie = movies[0]
-
   return (
     <>
       <Header />
       <main id="cartelera">
-        <Hero movie={featuredMovie} />
+        <Hero movie={movies[0]} />
         <MovieList movies={movies} />
       </main>
       <Footer />
