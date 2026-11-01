@@ -1,0 +1,91 @@
+.featured-movie {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(180px, 0.65fr);
+  align-items: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  color: #ffffff;
+  background: linear-gradient(120deg, #1f2937 45%, #3b2631 100%);
+}
+
+.featured-movie__content {
+  max-width: 680px;
+}
+
+.featured-movie__eyebrow {
+  margin: 0 0 0.75rem;
+  color: #f6a6b4;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.featured-movie h1 {
+  margin: 0;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 1.05;
+}
+
+.featured-movie__synopsis {
+  max-width: 58ch;
+  margin: 1.25rem 0;
+  color: #e5e7eb;
+  line-height: 1.7;
+}
+
+.featured-movie__details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.featured-movie__details span {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgb(255 255 255 / 24%);
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.featured-movie__details .featured-movie__rating {
+  color: #ffe08a;
+}
+
+.featured-movie__showtimes {
+  margin: 1.25rem 0 0;
+  color: #e5e7eb;
+}
+
+.featured-movie__poster {
+  justify-self: end;
+  width: min(100%, 250px);
+  overflow: hidden;
+  border-radius: 0.75rem;
+  box-shadow: 0 1.25rem 2.5rem rgb(0 0 0 / 32%);
+}
+
+.featured-movie__poster img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+@media (max-width: 640px) {
+  .featured-movie {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .featured-movie__poster {
+    justify-self: start;
+    width: min(60%, 220px);
+  }
+}
