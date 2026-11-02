@@ -27,7 +27,11 @@ function App() {
       <Header />
       <main id="cartelera">
         <Hero movie={movies[0]} />
-        <MovieList movies={movies} />
+        <MovieList
+          movies={movies}
+          favoriteMovies={favoriteMovies}
+          onToggleFavorite={toggleFavorite}
+        />
       </main>
       <Footer />
     </>

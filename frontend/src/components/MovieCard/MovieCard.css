@@ -39,6 +39,11 @@
   font-weight: 700;
 }
 
+.movie-card__favorite {
+  width: 100%;
+  margin-top: 1rem;
+}
+
 .movie-card__showtimes h4 {
   margin: 0 0 0.5rem;
   color: var(--color-text);

@@ -1,6 +1,7 @@
+import Button from '../Button/Button.jsx'
 import './MovieCard.css'
 
-function MovieCard({ movie }) {
+function MovieCard({ movie, isFavorite, onToggleFavorite }) {
   return (
     <article className="movie-card">
       <img
@@ -22,6 +23,15 @@ function MovieCard({ movie }) {
             ))}
           </ul>
         </div>
+        <Button
+          className="movie-card__favorite"
+          variant={isFavorite ? 'primary' : 'secondary'}
+          type="button"
+          aria-pressed={isFavorite}
+          onClick={() => onToggleFavorite(movie)}
+        >
+          {isFavorite ? 'Quitar de favoritas' : 'Agregar a favoritas'}
+        </Button>
       </div>
     </article>
   )
