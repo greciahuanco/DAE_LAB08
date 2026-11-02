@@ -55,6 +55,7 @@ function App() {
           movies={movies}
           favoriteMovies={favoriteMovies}
           onToggleFavorite={toggleFavorite}
+          searchText={debouncedSearchText}
         />
       </main>
       <Footer />
