@@ -61,6 +61,29 @@
   color: #e5e7eb;
 }
 
+.featured-movie__search {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+  max-width: 620px;
+  margin-top: 1.5rem;
+}
+
+.featured-movie__search .movie-search {
+  flex: 1;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.featured-movie__search .form-label {
+  color: #ffffff;
+}
+
+.featured-movie__search .button {
+  flex-shrink: 0;
+}
+
 .featured-movie__poster {
   justify-self: end;
   width: min(100%, 250px);
@@ -87,5 +110,10 @@
   .featured-movie__poster {
     justify-self: start;
     width: min(60%, 220px);
+  }
+
+  .featured-movie__search {
+    align-items: stretch;
+    flex-direction: column;
   }
 }

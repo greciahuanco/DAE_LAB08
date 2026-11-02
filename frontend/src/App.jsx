@@ -3,7 +3,6 @@ import Footer from './components/Footer/Footer.jsx'
 import Header from './components/Header/Header.jsx'
 import Hero from './components/Hero/Hero.jsx'
 import MovieList from './components/MovieList/MovieList.jsx'
-import MovieSearch from './components/MovieSearch/MovieSearch.jsx'
 import { movies } from './data/movies.js'
 
 const searchDelay = 400
@@ -42,14 +41,22 @@ function App() {
     })
   }
 
+  function handleShowMovies() {
+    document.getElementById('movie-list-title')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
+  }
+
   return (
     <>
       <Header />
       <main id="cartelera">
-        <Hero movie={movies[0]} />
-        <MovieSearch
-          value={searchText}
-          onChange={handleSearchChange}
+        <Hero
+          movie={movies[0]}
+          searchValue={searchText}
+          onSearchChange={handleSearchChange}
+          onShowMovies={handleShowMovies}
         />
         <MovieList
           movies={movies}
