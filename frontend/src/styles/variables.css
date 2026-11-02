@@ -10,4 +10,11 @@
   --color-text: #1f2937;
   --color-muted: #6b7280;
   --color-accent: #b91c3b;
+  --color-accent-hover: #9f1833;
+  --color-border: #d1d5db;
+  --color-focus: #2563eb;
+  --color-error: #b91c1c;
+  --font-body: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --radius-control: 0.5rem;
+  --shadow-control: 0 1px 2px rgb(31 41 55 / 8%);
 }
