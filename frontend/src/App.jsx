@@ -3,10 +3,12 @@ import Footer from './components/Footer/Footer.jsx'
 import Header from './components/Header/Header.jsx'
 import Hero from './components/Hero/Hero.jsx'
 import MovieList from './components/MovieList/MovieList.jsx'
+import MovieSearch from './components/MovieSearch/MovieSearch.jsx'
 import { movies } from './data/movies.js'
 
 function App() {
   const [favoriteMovies, setFavoriteMovies] = useState([])
+  const [searchText, setSearchText] = useState('')
 
   function toggleFavorite(movie) {
     setFavoriteMovies((currentFavorites) => {
@@ -27,6 +29,10 @@ function App() {
       <Header />
       <main id="cartelera">
         <Hero movie={movies[0]} />
+        <MovieSearch
+          value={searchText}
+          onChange={(event) => setSearchText(event.target.value)}
+        />
         <MovieList
           movies={movies}
           favoriteMovies={favoriteMovies}
