@@ -6,14 +6,30 @@ import MovieList from './components/MovieList/MovieList.jsx'
 import { movies } from './data/movies.js'
 
 const searchDelay = 400
+const favoritesStorageKey = 'cine-aurora-favorites'
+
+function loadFavoriteMovies() {
+  try {
+    const savedFavorites = window.localStorage.getItem(favoritesStorageKey)
+    const parsedFavorites = savedFavorites ? JSON.parse(savedFavorites) : []
+
+    return Array.isArray(parsedFavorites) ? parsedFavorites : []
+  } catch {
+    return []
+  }
+}
 
 function App() {
-  const [favoriteMovies, setFavoriteMovies] = useState([])
+  const [favoriteMovies, setFavoriteMovies] = useState(loadFavoriteMovies)
   const [searchText, setSearchText] = useState('')
   const [debouncedSearchText, setDebouncedSearchText] = useState('')
   const searchTimer = useRef(null)
 
   useEffect(() => () => window.clearTimeout(searchTimer.current), [])
+
+  useEffect(() => {
+    window.localStorage.setItem(favoritesStorageKey, JSON.stringify(favoriteMovies))
+  }, [favoriteMovies])
 
   function handleSearchChange(event) {
     const nextSearchText = event.target.value
