@@ -29,7 +29,7 @@ function MovieList({ movies, favoriteMovies, onToggleFavorite, searchText = '' }
           ))}
         </div>
       ) : (
-        <p className="movie-list__empty" role="status">
+        <p className="status-message" role="status">
           No encontré películas que coincidan con “{searchText}”. Prueba con otro título.
         </p>
       )}
