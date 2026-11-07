@@ -1,6 +1,6 @@
 import './Header.css'
 
-function Header() {
+function Header({ favoriteCount }) {
   return (
     <header className="site-header" id="inicio">
       <div className="site-header__content">
@@ -13,6 +13,9 @@ function Header() {
           <a href="#promociones">Promociones</a>
           <a href="#contacto">Contacto</a>
         </nav>
+        <span className="site-header__favorites">
+          <span aria-hidden="true">♥</span> Favoritas: {favoriteCount}
+        </span>
       </div>
     </header>
   )

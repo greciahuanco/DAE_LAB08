@@ -5,6 +5,7 @@
 
 .site-header__content {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
@@ -37,6 +38,18 @@
 
 .site-header__navigation a:hover,
 .site-header__navigation a:focus-visible {
+  color: #f6a6b4;
+}
+
+.site-header__favorites {
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgb(255 255 255 / 30%);
+  border-radius: 999px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.site-header__favorites span {
   color: #f6a6b4;
 }
 

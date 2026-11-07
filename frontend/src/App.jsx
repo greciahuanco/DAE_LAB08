@@ -27,6 +27,7 @@ function App() {
   const [favoriteNotice, setFavoriteNotice] = useState(null)
   const [searchText, setSearchText] = useState('')
   const debouncedSearchText = useDebounce(searchText, searchDelay)
+  const favoriteCount = favoriteMovies.length
 
   useEffect(() => {
     window.localStorage.setItem(favoritesStorageKey, JSON.stringify(favoriteMovies))
@@ -66,7 +67,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header favoriteCount={favoriteCount} />
       <main id="cartelera">
         <Hero
           movie={movies[0]}
