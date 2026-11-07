@@ -13,7 +13,7 @@
 
 .movie-list__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--movie-columns), minmax(0, 1fr));
   align-items: stretch;
   gap: 1.5rem;
 }
@@ -22,18 +22,8 @@
   width: 100%;
 }
 
-@media (max-width: 960px) {
-  .movie-list__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 640px) {
   .movie-list {
     padding: 0.5rem 1rem 2rem;
-  }
-
-  .movie-list__grid {
-    grid-template-columns: 1fr;
   }
 }
