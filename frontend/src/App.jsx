@@ -44,6 +44,10 @@ function App() {
     setSearchText(event.target.value)
   }
 
+  function handleClearSearch() {
+    setSearchText('')
+  }
+
   function toggleFavorite(movie) {
     const isFavorite = favoriteMovies.some((favoriteMovie) => favoriteMovie.id === movie.id)
     const nextFavorites = isFavorite
@@ -73,6 +77,7 @@ function App() {
           movie={movies[0]}
           searchValue={searchText}
           onSearchChange={handleSearchChange}
+          onClearSearch={handleClearSearch}
           onShowMovies={handleShowMovies}
         />
         <PremieresSection />

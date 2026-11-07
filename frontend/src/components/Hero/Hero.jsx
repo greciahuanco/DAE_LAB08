@@ -2,7 +2,7 @@ import Button from '../Button/Button.jsx'
 import MovieSearch from '../MovieSearch/MovieSearch.jsx'
 import './Hero.css'
 
-function Hero({ movie, searchValue, onSearchChange, onShowMovies }) {
+function Hero({ movie, searchValue, onSearchChange, onClearSearch, onShowMovies }) {
   return (
     <section className="featured-movie" aria-labelledby="featured-movie-title">
       <div className="featured-movie__content">
@@ -19,6 +19,9 @@ function Hero({ movie, searchValue, onSearchChange, onShowMovies }) {
         <div className="featured-movie__search">
           <MovieSearch value={searchValue} onChange={onSearchChange} />
           <Button onClick={onShowMovies}>Ver resultados</Button>
+          <Button variant="secondary" onClick={onClearSearch} disabled={!searchValue}>
+            Limpiar filtro
+          </Button>
         </div>
       </div>
       <div className="featured-movie__poster">
