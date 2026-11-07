@@ -1,0 +1,19 @@
+.favorite-notice {
+  position: fixed;
+  z-index: 10;
+  inset-inline-end: 1rem;
+  inset-block-start: 1rem;
+  max-width: min(24rem, calc(100% - 2rem));
+  pointer-events: none;
+}
+
+.favorite-notice p {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-control);
+  border-inline-start: 0.25rem solid var(--color-accent);
+  color: var(--color-surface);
+  background: var(--color-text);
+  box-shadow: 0 0.5rem 1.5rem rgb(31 41 55 / 24%);
+  overflow-wrap: anywhere;
+}

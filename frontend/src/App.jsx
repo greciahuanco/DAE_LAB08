@@ -4,6 +4,7 @@ import Header from './components/Header/Header.jsx'
 import Hero from './components/Hero/Hero.jsx'
 import MovieList from './components/MovieList/MovieList.jsx'
 import { movies } from './data/movies.js'
+import './styles/favorite-notice.css'
 
 const searchDelay = 400
 const favoritesStorageKey = 'cine-aurora-favorites'
@@ -21,6 +22,7 @@ function loadFavoriteMovies() {
 
 function App() {
   const [favoriteMovies, setFavoriteMovies] = useState(loadFavoriteMovies)
+  const [favoriteNotice, setFavoriteNotice] = useState(null)
   const [searchText, setSearchText] = useState('')
   const [debouncedSearchText, setDebouncedSearchText] = useState('')
   const searchTimer = useRef(null)
@@ -30,6 +32,13 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem(favoritesStorageKey, JSON.stringify(favoriteMovies))
   }, [favoriteMovies])
+
+  useEffect(() => {
+    if (!favoriteNotice) return
+
+    const timer = window.setTimeout(() => setFavoriteNotice(null), 4000)
+    return () => window.clearTimeout(timer)
+  }, [favoriteNotice])
 
   function handleSearchChange(event) {
     const nextSearchText = event.target.value
@@ -44,16 +53,16 @@ function App() {
   }
 
   function toggleFavorite(movie) {
-    setFavoriteMovies((currentFavorites) => {
-      const isFavorite = currentFavorites.some(
-        (favoriteMovie) => favoriteMovie.id === movie.id,
-      )
+    const isFavorite = favoriteMovies.some((favoriteMovie) => favoriteMovie.id === movie.id)
+    const nextFavorites = isFavorite
+      ? favoriteMovies.filter((favoriteMovie) => favoriteMovie.id !== movie.id)
+      : [...favoriteMovies, movie]
 
-      if (isFavorite) {
-        return currentFavorites.filter((favoriteMovie) => favoriteMovie.id !== movie.id)
-      }
-
-      return [...currentFavorites, movie]
+    setFavoriteMovies(nextFavorites)
+    setFavoriteNotice({
+      message: isFavorite
+        ? `Quitaste «${movie.title}» de tus favoritas`
+        : `Agregaste «${movie.title}» a tus favoritas`,
     })
   }
 
@@ -82,6 +91,9 @@ function App() {
         />
       </main>
       <Footer />
+      <div className="favorite-notice" role="status">
+        {favoriteNotice && <p>{favoriteNotice.message}</p>}
+      </div>
     </>
   )
 }
