@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Footer from './components/Footer/Footer.jsx'
 import Header from './components/Header/Header.jsx'
 import Hero from './components/Hero/Hero.jsx'
 import MovieList from './components/MovieList/MovieList.jsx'
 import { movies } from './data/movies.js'
+import { useDebounce } from './hooks/useDebounce.js'
 import './styles/favorite-notice.css'
 
 const searchDelay = 400
@@ -24,10 +25,7 @@ function App() {
   const [favoriteMovies, setFavoriteMovies] = useState(loadFavoriteMovies)
   const [favoriteNotice, setFavoriteNotice] = useState(null)
   const [searchText, setSearchText] = useState('')
-  const [debouncedSearchText, setDebouncedSearchText] = useState('')
-  const searchTimer = useRef(null)
-
-  useEffect(() => () => window.clearTimeout(searchTimer.current), [])
+  const debouncedSearchText = useDebounce(searchText, searchDelay)
 
   useEffect(() => {
     window.localStorage.setItem(favoritesStorageKey, JSON.stringify(favoriteMovies))
@@ -41,15 +39,7 @@ function App() {
   }, [favoriteNotice])
 
   function handleSearchChange(event) {
-    const nextSearchText = event.target.value
-    setSearchText(nextSearchText)
-    console.log('Texto escrito:', nextSearchText)
-
-    window.clearTimeout(searchTimer.current)
-    searchTimer.current = window.setTimeout(() => {
-      setDebouncedSearchText(nextSearchText)
-      console.log('Texto procesado después del retardo:', nextSearchText)
-    }, searchDelay)
+    setSearchText(event.target.value)
   }
 
   function toggleFavorite(movie) {
