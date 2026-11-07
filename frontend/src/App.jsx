@@ -3,6 +3,7 @@ import Footer from './components/Footer/Footer.jsx'
 import Header from './components/Header/Header.jsx'
 import Hero from './components/Hero/Hero.jsx'
 import MovieList from './components/MovieList/MovieList.jsx'
+import PremieresSection from './components/PremieresSection/PremieresSection.jsx'
 import { movies } from './data/movies.js'
 import { useDebounce } from './hooks/useDebounce.js'
 import './styles/favorite-notice.css'
@@ -73,6 +74,7 @@ function App() {
           onSearchChange={handleSearchChange}
           onShowMovies={handleShowMovies}
         />
+        <PremieresSection />
         <MovieList
           movies={movies}
           favoriteMovies={favoriteMovies}
