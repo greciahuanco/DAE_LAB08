@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import ExamsPage from './components/ExamsPage/ExamsPage.jsx'
 import Footer from './components/Footer/Footer.jsx'
 import Header from './components/Header/Header.jsx'
 import Hero from './components/Hero/Hero.jsx'
@@ -23,11 +24,21 @@ function loadFavoriteMovies() {
 }
 
 function App() {
+  const [route, setRoute] = useState(() => window.location.hash)
   const [favoriteMovies, setFavoriteMovies] = useState(loadFavoriteMovies)
   const [favoriteNotice, setFavoriteNotice] = useState(null)
   const [searchText, setSearchText] = useState('')
   const debouncedSearchText = useDebounce(searchText, searchDelay)
   const favoriteCount = favoriteMovies.length
+
+  useEffect(() => {
+    function updateRoute() {
+      setRoute(window.location.hash)
+    }
+
+    window.addEventListener('hashchange', updateRoute)
+    return () => window.removeEventListener('hashchange', updateRoute)
+  }, [])
 
   useEffect(() => {
     window.localStorage.setItem(favoritesStorageKey, JSON.stringify(favoriteMovies))
@@ -72,22 +83,26 @@ function App() {
   return (
     <>
       <Header favoriteCount={favoriteCount} />
-      <main id="cartelera">
-        <Hero
-          movie={movies[0]}
-          searchValue={searchText}
-          onSearchChange={handleSearchChange}
-          onClearSearch={handleClearSearch}
-          onShowMovies={handleShowMovies}
-        />
-        <PremieresSection />
-        <MovieList
-          movies={movies}
-          favoriteMovies={favoriteMovies}
-          onToggleFavorite={toggleFavorite}
-          searchText={debouncedSearchText}
-        />
-      </main>
+      {route === '#exams' || route === '#exams/new' ? (
+        <ExamsPage creating={route === '#exams/new'} />
+      ) : (
+        <main id="cartelera">
+          <Hero
+            movie={movies[0]}
+            searchValue={searchText}
+            onSearchChange={handleSearchChange}
+            onClearSearch={handleClearSearch}
+            onShowMovies={handleShowMovies}
+          />
+          <PremieresSection />
+          <MovieList
+            movies={movies}
+            favoriteMovies={favoriteMovies}
+            onToggleFavorite={toggleFavorite}
+            searchText={debouncedSearchText}
+          />
+        </main>
+      )}
       <Footer />
       <div className="favorite-notice" role="status">
         {favoriteNotice && <p>{favoriteNotice.message}</p>}

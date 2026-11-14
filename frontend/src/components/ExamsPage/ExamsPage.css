@@ -1,0 +1,44 @@
+.exams-page {
+  padding-block: 2rem 3rem;
+}
+
+.exams-page form {
+  max-width: 34rem;
+}
+
+.exams-actions {
+  margin-block: 1rem;
+}
+
+.exams-table-wrap {
+  overflow-x: auto;
+}
+
+.exams-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-surface);
+}
+
+.exams-table th,
+.exams-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.exams-skeleton {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.exams-skeleton div {
+  height: 2rem;
+  border-radius: var(--radius-control);
+  background: var(--color-border);
+}
+
+.exams-field-error {
+  color: var(--color-error);
+  margin-top: 0.5rem;
+}

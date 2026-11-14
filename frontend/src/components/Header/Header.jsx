@@ -11,6 +11,7 @@ function Header({ favoriteCount }) {
           <a href="#inicio">Inicio</a>
           <a href="#cartelera">Cartelera</a>
           <a href="#promociones">Promociones</a>
+          <a href="#exams">Exámenes</a>
           <a href="#contacto">Contacto</a>
         </nav>
         <span className="site-header__favorites">
