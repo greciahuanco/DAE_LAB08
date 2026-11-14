@@ -15,6 +15,8 @@ from .serializers import (
 class ExamViewSet(viewsets.ModelViewSet):
     serializer_class = ExamSerializer
     queryset = Exam.objects.annotate(question_count=Count("questions")).order_by("id")
+    filter_backends = [filters.OrderingFilter]
+    ordering_fields = ["id"]
 
 
 @extend_schema_view(

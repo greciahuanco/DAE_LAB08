@@ -12,7 +12,7 @@ function authenticated(token) {
 export async function listExams(token, page, signal) {
   const { data } = await api.get('exams/', {
     ...authenticated(token),
-    params: { page },
+    params: { page, ordering: '-id' },
     signal,
   })
   return data
